@@ -47,9 +47,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-if (app.Environment.IsProduction())
-{
-	app.UseMigrateDatabase();
-}
+//if (app.Environment.IsProduction())
+//{
+//	app.UseMigrateDatabase();
+//}
 
 app.Run();
