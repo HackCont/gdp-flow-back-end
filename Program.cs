@@ -15,6 +15,8 @@ builder.Services.AddSwaggerSetup();
 
 builder.Services.AddAuthenticationSetup(builder.Configuration);
 
+builder.Services.AddCorsSetup(builder.Configuration);
+
 builder.Services.AddHttpClient();
 
 builder.Services.Configure<KeycloakSettings>(builder.Configuration.GetSection("Keycloak"));
@@ -36,6 +38,8 @@ app.UseSwaggerUI();
 //}
 
 app.UseHttpsRedirection();
+
+app.UseCors("default");
 
 app.UseAuthentication();
 
