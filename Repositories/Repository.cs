@@ -29,8 +29,8 @@ public class Repository<T> : IRepository<T> where T : class
 		try
 		{
 			await _dbSet.AddAsync(entity);
-			await _context.SaveChangesAsync();
-			return true;
+			var affectedRows = await _context.SaveChangesAsync();
+			return affectedRows > 0;
 		}
 		catch (Exception)
 		{
@@ -39,10 +39,19 @@ public class Repository<T> : IRepository<T> where T : class
 		}
 	}
 
-	public void Update(T entity)
+	public async Task<bool> UpdateAsync(T entity)
 	{
-		_dbSet.Update(entity);
-		_context.SaveChanges();
+		try
+		{
+			_dbSet.Update(entity);
+			var affectedRows = await _context.SaveChangesAsync();
+			return affectedRows > 0;
+		}
+		catch (Exception)
+		{
+
+			return false;
+		}
 	}
 
 	public void Delete(T entity)
