@@ -2,6 +2,8 @@ using GdpFlow.API.Data;
 using GdpFlow.API.Extensions;
 using GdpFlow.API.Models.Settings;
 using GdpFlow.API.Repositories;
+using GdpFlow.API.Repositories.UserRepository;
+using GdpFlow.API.Services.UserServices.Login;
 using GdpFlow.API.Services.UserServices.Register;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +27,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 	options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseConnection")));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRegisterUserService, RegisterUserService>();
+builder.Services.AddScoped<ILoginService, LoginService>();
 
 var app = builder.Build();
 
