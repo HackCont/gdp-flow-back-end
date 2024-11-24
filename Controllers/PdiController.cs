@@ -22,4 +22,11 @@ public class PdiController : ResultsControllerBase
 		var result = await _pdiService.UpdateOrCreateAsync(createPdiDTO, Request);
 		return CustomResult(result);
 	}
+
+	[HttpGet]
+	public async Task<IActionResult> GetPdi()
+	{
+		var result = await _pdiService.GetPdiAsync(Request);
+		return CustomResult(result);
+	}
 }
