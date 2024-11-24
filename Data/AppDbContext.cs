@@ -10,6 +10,7 @@ public class AppDbContext : DbContext
 	}
 
 	public required DbSet<User> Users { get; set; }
+	public required DbSet<Pdi> Pdis { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
