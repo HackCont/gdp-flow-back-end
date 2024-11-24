@@ -1,11 +1,11 @@
-﻿using GdpFlow.API.Models.DTOs.User.Login;
-using GdpFlow.API.Models.DTOs.User.Register;
-using GdpFlow.API.Services.UserServices.Login;
-using GdpFlow.API.Services.UserServices.Register;
+﻿using GdpFlow.API.Models.DTOs.Login;
+using GdpFlow.API.Models.DTOs.Register;
+using GdpFlow.API.Services.Login;
+using GdpFlow.API.Services.Register;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GdpFlow.API.Controllers;
-[Route("api/users/")]
+[Route("api/auth/")]
 [ApiController]
 [Produces("application/json")]
 public class AuthController : ResultsControllerBase
