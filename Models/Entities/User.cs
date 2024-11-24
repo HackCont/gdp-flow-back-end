@@ -15,4 +15,7 @@ public class User
 
 	[JsonIgnore]
 	public Pdi? Pdi { get; set; }
+
+	[JsonIgnore]
+	public ICollection<Moment>? Moments { get; set; }
 }
