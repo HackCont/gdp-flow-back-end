@@ -1,5 +1,6 @@
 ﻿using FluentResults;
 using GdpFlow.API.Models.DTOs.User;
+using GdpFlow.API.Models.Entities;
 using GdpFlow.API.Models.Results;
 using GdpFlow.API.Repositories.UserRepository;
 
@@ -31,6 +32,7 @@ public class UserService : IUserService
 		existingUser.LastName = updateUserDTO.LastName;
 		existingUser.Phone = updateUserDTO?.Phone;
 		existingUser.Bio = updateUserDTO?.Bio;
+		existingUser.Skills = updateUserDTO?.Skills;
 
 		var userUpdated = await _userRepository.UpdateAsync(existingUser);
 		if (!userUpdated)
@@ -39,5 +41,16 @@ public class UserService : IUserService
 		}
 
 		return Result.Ok().WithSuccess(new CustomSuccess("User updated successfully", StatusCodes.Status200OK));
+	}
+
+	public async Task<IResult<User>> GetByIdAsync(Guid userId)
+	{
+		var existingUser = await _userRepository.GetByIdAsync(userId);
+		if (existingUser == null)
+		{
+			return Result.Fail<User>(new CustomError("User not found", StatusCodes.Status404NotFound));
+		}
+
+		return Result.Ok(existingUser);
 	}
 }
