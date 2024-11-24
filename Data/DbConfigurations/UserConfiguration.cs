@@ -31,5 +31,9 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 		builder.Property(u => u.CreatedAt)
 			.HasColumnName("Created_at")
 			.HasDefaultValueSql("NOW()");
+
+		builder.HasOne(u => u.Pdi)
+			.WithOne(p => p.User)
+			.HasForeignKey<Pdi>(p => p.UserId);
 	}
 }
