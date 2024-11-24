@@ -3,8 +3,9 @@ using GdpFlow.API.Extensions;
 using GdpFlow.API.Models.Settings;
 using GdpFlow.API.Repositories;
 using GdpFlow.API.Repositories.UserRepository;
-using GdpFlow.API.Services.UserServices.Login;
-using GdpFlow.API.Services.UserServices.Register;
+using GdpFlow.API.Services.Login;
+using GdpFlow.API.Services.Register;
+using GdpFlow.API.Services.Users;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +30,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRegisterUserService, RegisterUserService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 
 var app = builder.Build();
