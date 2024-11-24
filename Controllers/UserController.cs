@@ -22,4 +22,12 @@ public class UserController : ResultsControllerBase
 		var result = await _userService.UpdateUserAsync(userId, updateDTO);
 		return CustomResult(result);
 	}
+
+	[HttpGet("{userId}")]
+	[Authorize]
+	public async Task<IActionResult> GetById(Guid userId)
+	{
+		var result = await _userService.GetByIdAsync(userId);
+		return CustomResult(result);
+	}
 }
