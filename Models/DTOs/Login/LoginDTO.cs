@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GdpFlow.API.Models.DTOs.User.Login;
+namespace GdpFlow.API.Models.DTOs.Login;
 
 public class LoginDTO
 {

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace GdpFlow.API.Models.DTOs.User.Register;
+namespace GdpFlow.API.Models.DTOs.Register;
 
 public class AdminTokenResponseDTO
 {

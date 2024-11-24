@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GdpFlow.API.Models.DTOs.User.Register;
+namespace GdpFlow.API.Models.DTOs.Register;
 
 public class RegisterDTO
 {
