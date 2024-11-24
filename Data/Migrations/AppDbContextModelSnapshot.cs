@@ -23,6 +23,36 @@ namespace GdpFlow.API.Data.Migrations
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "uuid-ossp");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("GdpFlow.API.Models.Entities.Moment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasDefaultValueSql("uuid_generate_v4()");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Moments", (string)null);
+                });
+
             modelBuilder.Entity("GdpFlow.API.Models.Entities.Pdi", b =>
                 {
                     b.Property<Guid>("Id")
@@ -122,6 +152,17 @@ namespace GdpFlow.API.Data.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
+            modelBuilder.Entity("GdpFlow.API.Models.Entities.Moment", b =>
+                {
+                    b.HasOne("GdpFlow.API.Models.Entities.User", "User")
+                        .WithMany("Moments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GdpFlow.API.Models.Entities.Pdi", b =>
                 {
                     b.HasOne("GdpFlow.API.Models.Entities.User", "User")
@@ -135,6 +176,8 @@ namespace GdpFlow.API.Data.Migrations
 
             modelBuilder.Entity("GdpFlow.API.Models.Entities.User", b =>
                 {
+                    b.Navigation("Moments");
+
                     b.Navigation("Pdi");
                 });
 #pragma warning restore 612, 618
