@@ -18,4 +18,8 @@ public class PdiRepository : Repository<Pdi>, IPdiRepository
 		return await _context.Pdis.FirstOrDefaultAsync(p => p.Id == pdiId);
 	}
 
+	public async Task<Pdi?> GetPdiByUserAsync(Guid userid)
+	{
+		return await _context.Pdis.FirstOrDefaultAsync(p => p.UserId == userid);
+	}
 }

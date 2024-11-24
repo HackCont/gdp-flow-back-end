@@ -15,6 +15,22 @@ public class PdiService : IPdiService
 		_pdiRepository = pdiRepository;
 	}
 
+	public async Task<Result<Pdi>> GetPdiAsync(HttpRequest request)
+	{
+		if (!request.Headers.TryGetValue("userId", out var userId))
+		{
+			return Result.Fail(new CustomError("UserId not found in header", StatusCodes.Status500InternalServerError));
+		}
+
+		var existingPdi = await _pdiRepository.GetPdiByUserAsync(Guid.Parse(userId!));
+		if (existingPdi == null)
+		{
+			return Result.Fail<Pdi>(new CustomError("Pdi not found", StatusCodes.Status404NotFound));
+		}
+
+		return Result.Ok(existingPdi);
+	}
+
 	public async Task<Result> UpdateOrCreateAsync(CreatePdiDTO pdiDTO, HttpRequest request)
 	{
 		if (!request.Headers.TryGetValue("pdiId", out var pdiId))
@@ -28,8 +44,7 @@ public class PdiService : IPdiService
 			return Result.Ok().WithSuccess(new CustomSuccess("Pdi registered successfully", StatusCodes.Status201Created));
 		}
 
-		var id = Guid.Parse(pdiId!);
-		var existingPdi = await _pdiRepository.GetByIdAsync(id);
+		var existingPdi = await _pdiRepository.GetByIdAsync(Guid.Parse(pdiId!));
 		if (existingPdi == null)
 		{
 			return Result.Fail(new CustomError("Pdi not found", StatusCodes.Status404NotFound));
