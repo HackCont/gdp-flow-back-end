@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GdpFlow.API.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241124070308_AddPdiTable")]
-    partial class AddPdiTable
+    [Migration("20241124110009_AddPdiMigrate")]
+    partial class AddPdiMigrate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,7 +76,7 @@ namespace GdpFlow.API.Data.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Pdi");
+                    b.ToTable("Pdis");
                 });
 
             modelBuilder.Entity("GdpFlow.API.Models.Entities.User", b =>
