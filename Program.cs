@@ -2,9 +2,11 @@ using GdpFlow.API.Data;
 using GdpFlow.API.Extensions;
 using GdpFlow.API.Models.Settings;
 using GdpFlow.API.Repositories;
+using GdpFlow.API.Repositories.MomentRepository;
 using GdpFlow.API.Repositories.PdiRepository;
 using GdpFlow.API.Repositories.UserRepository;
 using GdpFlow.API.Services.Login;
+using GdpFlow.API.Services.Moments;
 using GdpFlow.API.Services.Pdis;
 using GdpFlow.API.Services.Register;
 using GdpFlow.API.Services.Users;
@@ -32,9 +34,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPdiRepository, PdiRepository>();
+builder.Services.AddScoped<IMomentRepository, MomentRepository>();
 builder.Services.AddScoped<IRegisterUserService, RegisterUserService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPdiService, PdiService>();
+builder.Services.AddScoped<IMomentService, MomentService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 
 var app = builder.Build();
