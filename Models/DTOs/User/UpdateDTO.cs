@@ -18,6 +18,8 @@ public class UpdateDTO
 
 	public string? Phone { get; set; }
 
+	public string? Skills { get; set; }
+
 	[StringLength(300, ErrorMessage = "Bio can't be longer than 300 characters")]
 	public string? Bio { get; set; }
 }
