@@ -3,6 +3,7 @@ using GdpFlow.API.Models.DTOs.Moment;
 using GdpFlow.API.Models.Entities;
 using GdpFlow.API.Models.Results;
 using GdpFlow.API.Repositories.MomentRepository;
+using Microsoft.IdentityModel.Tokens;
 
 namespace GdpFlow.API.Services.Moments;
 
@@ -32,5 +33,16 @@ public class MomentService : IMomentService
 		}
 
 		return Result.Ok().WithSuccess(new CustomSuccess("Moment registered successfully", StatusCodes.Status201Created));
+	}
+
+	public async Task<IResult<IEnumerable<Moment>>> GetAllMomentsAsync(Guid userId)
+	{
+		var existingMoment = await _momentRepository.GetAllAsync(m => m.UserId == userId);
+		if (existingMoment.IsNullOrEmpty())
+		{
+			return Result.Fail<IEnumerable<Moment>>(new CustomError("Moment not found", StatusCodes.Status404NotFound));
+		}
+
+		return Result.Ok(existingMoment);
 	}
 }
