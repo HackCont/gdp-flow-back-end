@@ -35,5 +35,10 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 		builder.HasOne(u => u.Pdi)
 			.WithOne(p => p.User)
 			.HasForeignKey<Pdi>(p => p.UserId);
+
+		builder.HasMany(u => u.Moments)
+			.WithOne(m => m.User)
+			.HasForeignKey(m => m.UserId)
+			.OnDelete(DeleteBehavior.Cascade);
 	}
 }
