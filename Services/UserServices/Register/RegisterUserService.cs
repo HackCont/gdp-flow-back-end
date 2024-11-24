@@ -3,7 +3,7 @@ using GdpFlow.API.Models.DTOs.User.Register;
 using GdpFlow.API.Models.Entities;
 using GdpFlow.API.Models.Results;
 using GdpFlow.API.Models.Settings;
-using GdpFlow.API.Repositories;
+using GdpFlow.API.Repositories.UserRepository;
 using Microsoft.Extensions.Options;
 using System.Net.Http.Headers;
 
@@ -12,10 +12,10 @@ namespace GdpFlow.API.Services.UserServices.Register;
 public class RegisterUserService : IRegisterUserService
 {
 	public readonly IHttpClientFactory _httpClientFactory;
-	public readonly IRepository<User> _userRepository;
+	public readonly IUserRepository _userRepository;
 	private readonly KeycloakSettings _keycloakSettings;
 
-	public RegisterUserService(IHttpClientFactory httpClientFactory, IRepository<User> userRepository, IOptions<KeycloakSettings> keycloakSettings)
+	public RegisterUserService(IHttpClientFactory httpClientFactory, IUserRepository userRepository, IOptions<KeycloakSettings> keycloakSettings)
 	{
 		_httpClientFactory = httpClientFactory;
 		_userRepository = userRepository;
@@ -24,6 +24,12 @@ public class RegisterUserService : IRegisterUserService
 
 	public async Task<Result> RegisterAsync(RegisterDTO registerDTO)
 	{
+		var existingUser = await _userRepository.GetByEmailAsync(registerDTO.Email);
+		if (existingUser != null)
+		{
+			return Result.Fail(new CustomError("User already exists", StatusCodes.Status409Conflict));
+		}
+
 		var adminAccessToken = await GetAdminTokenAsync();
 		if (adminAccessToken == null)
 		{
