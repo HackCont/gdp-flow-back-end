@@ -17,6 +17,6 @@ public class RegisterDTO
 	public required string LastName { get; set; }
 
 	[Required(ErrorMessage = "Password is required")]
-	[StringLength(100, MinimumLength = 5, ErrorMessage = "Password must be at least 6 characters long")]
+	[StringLength(12, MinimumLength = 5, ErrorMessage = "Password must be at least 5 characters long")]
 	public required string Password { get; set; }
 }
