@@ -17,7 +17,7 @@ public class UserController : ResultsControllerBase
 
 	[HttpPut("{userId}")]
 	[Authorize]
-	public async Task<IActionResult> Update(Guid userId, UpdateDTO updateDTO)
+	public async Task<IActionResult> Update(Guid userId, [FromBody] UpdateDTO updateDTO)
 	{
 		var result = await _userService.UpdateUserAsync(userId, updateDTO);
 		return CustomResult(result);
