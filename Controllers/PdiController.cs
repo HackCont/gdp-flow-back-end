@@ -23,10 +23,11 @@ public class PdiController : ResultsControllerBase
 		return CustomResult(result);
 	}
 
-	[HttpGet]
-	public async Task<IActionResult> GetPdi()
+	[HttpGet("{userId}")]
+	[Authorize]
+	public async Task<IActionResult> GetPdi(Guid userId)
 	{
-		var result = await _pdiService.GetPdiAsync(Request);
+		var result = await _pdiService.GetPdiAsync(userId);
 		return CustomResult(result);
 	}
 }
