@@ -7,6 +7,7 @@ public class KeycloakSettings
 	public required bool RequireHttpsMetadata { get; set; }
 	public required string ClientId { get; set; }
 	public required string ClientSecret { get; set; }
+	public required string Scope { get; set; }
 	public required KeycloakUri Uri { get; set; }
 }
 
