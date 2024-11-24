@@ -22,4 +22,12 @@ public class MomentController : ResultsControllerBase
 		var result = await _momentService.CreateAsync(momentDTO);
 		return CustomResult(result);
 	}
+
+	[HttpGet("{userId}")]
+	[Authorize]
+	public async Task<IActionResult> GetAllMoment(Guid userId)
+	{
+		var result = await _momentService.GetAllMomentsAsync(userId);
+		return CustomResult(result);
+	}
 }
