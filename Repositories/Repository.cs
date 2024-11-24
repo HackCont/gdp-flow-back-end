@@ -1,5 +1,6 @@
 ﻿using GdpFlow.API.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace GdpFlow.API.Repositories;
 
@@ -14,9 +15,16 @@ public class Repository<T> : IRepository<T> where T : class
 		_dbSet = _context.Set<T>();
 	}
 
-	public async Task<IEnumerable<T>> GetAllAsync()
+	public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null)
 	{
-		return await _dbSet.ToListAsync();
+		var query = _dbSet.AsNoTracking();
+
+		if (predicate != null)
+		{
+			query = query.Where(predicate);
+		}
+
+		return await query.ToListAsync();
 	}
 
 
@@ -48,11 +56,5 @@ public class Repository<T> : IRepository<T> where T : class
 
 			return false;
 		}
-	}
-
-	public void Delete(T entity)
-	{
-		_dbSet.Remove(entity);
-		_context.SaveChanges();
 	}
 }
