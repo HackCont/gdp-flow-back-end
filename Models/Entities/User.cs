@@ -1,4 +1,6 @@
-﻿namespace GdpFlow.API.Models.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace GdpFlow.API.Models.Entities;
 
 public class User
 {
@@ -11,5 +13,6 @@ public class User
 	public string? Skills { get; set; }
 	public DateTime CreatedAt { get; set; }
 
+	[JsonIgnore]
 	public Pdi? Pdi { get; set; }
 }
