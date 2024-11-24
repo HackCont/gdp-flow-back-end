@@ -10,4 +10,6 @@ public class User
 	public string? Bio { get; set; }
 	public string? Skills { get; set; }
 	public DateTime CreatedAt { get; set; }
+
+	public Pdi? Pdi { get; set; }
 }
