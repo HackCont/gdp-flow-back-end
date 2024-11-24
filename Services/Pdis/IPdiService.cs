@@ -6,5 +6,5 @@ namespace GdpFlow.API.Services.Pdis;
 
 public interface IPdiService
 {
-	Task<Result> UpdateOrCreateAsync(CreatePdiDTO pdiDTO, HttpRequest request, ClaimsPrincipal user);
+	Task<Result> UpdateOrCreateAsync(CreatePdiDTO pdiDTO, HttpRequest request);
 }

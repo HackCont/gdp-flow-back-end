@@ -3,7 +3,6 @@ using GdpFlow.API.Models.DTOs.Pdi;
 using GdpFlow.API.Models.Entities;
 using GdpFlow.API.Models.Results;
 using GdpFlow.API.Repositories.PdiRepository;
-using System.Security.Claims;
 
 namespace GdpFlow.API.Services.Pdis;
 
@@ -16,7 +15,7 @@ public class PdiService : IPdiService
 		_pdiRepository = pdiRepository;
 	}
 
-	public async Task<Result> UpdateOrCreateAsync(CreatePdiDTO pdiDTO, HttpRequest request, ClaimsPrincipal user)
+	public async Task<Result> UpdateOrCreateAsync(CreatePdiDTO pdiDTO, HttpRequest request)
 	{
 		if (!request.Headers.TryGetValue("pdiId", out var pdiId))
 		{
