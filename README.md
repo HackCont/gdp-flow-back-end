@@ -64,7 +64,7 @@ O banco de dados foi projetado utilizando PostgreSQL, com tabelas e relacionamen
   - **Momentos:** Registro de marcos importantes do ciclo GDP.
   - **PDI:** Dados dinâmicos para o plano de desenvolvimento individual.
 
-<h1 align="start">
+<h1 align="#-diagrama-da-aplicação">
    <a href="#"><img alt="Diagrama banco de dados" title="Diagrama banco de dados" src="https://firebasestorage.googleapis.com/v0/b/uploads-58ebc.appspot.com/o/db-diagram.png?alt=media&token=90fd5496-5b50-45ca-965a-d9b1dfd51c5f"/></a>
 </h1>
 
