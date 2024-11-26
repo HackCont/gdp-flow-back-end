@@ -171,6 +171,7 @@ sequenceDiagram
 
 ## 🔗 Links Úteis
 - [Figma](https://www.figma.com/design/t85gM3lPYiil6qGyg3VE3Y/GDP-Flow?node-id=0-1&t=wRVPSYK6sbv3Dvp7-1)
+- [Repositório Frontend](https://github.com/HackCont/gdp-flow-front-end)
 
 ---
 
