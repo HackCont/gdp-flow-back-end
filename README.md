@@ -140,7 +140,7 @@ sequenceDiagram
     API-->>Client: HTTP 200 OK + momentos
 ```
 
-## Criar PDI:
+## Criar e gerenciar PDI:
 ```mermaid
 sequenceDiagram
     autonumber
