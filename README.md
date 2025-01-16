@@ -181,12 +181,10 @@ Este projeto foi desenvolvido com a colaboração de:
 
 <table>
   <tr>
-    <td align="center"><a href="https://www.linkedin.com/in/thau%C3%A3-engelmann-6aaa04219/"><img src="https://firebasestorage.googleapis.com/v0/b/uploads-58ebc.appspot.com/o/thaua.jpeg?alt=media&token=e44f6155-1d22-468c-83e0-ec59d88051a7" width="80px;" alt="Foto Thauã Engelmann"/><br /><sub><b>Thauã Engelmann</b></sub></a><br /></td>
-   <td align="center"><a href="https://www.linkedin.com/in/rafaelmjardim/"><img src="https://firebasestorage.googleapis.com/v0/b/uploads-58ebc.appspot.com/o/rafael.jpeg?alt=media&token=45ec6c25-cae9-4443-a547-7d1b1c5de93c" width="80px;" alt="Foto Rafael Jardim"/><br /><sub><b>Rafael Jardim</b></sub></a><br /></td>
  <td align="center"><a href="https://www.linkedin.com/in/paulo-ricardo-magalhaes/"><img src="https://firebasestorage.googleapis.com/v0/b/uploads-58ebc.appspot.com/o/paulo.jpeg?alt=media&token=8658818a-1377-478a-884e-03efc40f2980" width="80px;" alt="Foto Paulo Ricardo"/><br /><sub><b>Paulo Ricardo</b></sub></a><br /></td>
-     <td align="center"><a href="https://www.linkedin.com/in/jorge--lima/"><img src="https://firebasestorage.googleapis.com/v0/b/uploads-58ebc.appspot.com/o/castion.jpeg?alt=media&token=73e7ba04-0ded-4a54-b59f-60a23fc472f4" width="80px;" alt="Foto Jorge Lima"/><br /><sub><b>Jorge Lima</b></sub></a><br /></td>
   </tr>
 </table>
 
 </br>
+
 <p align="right"><a href="#top"><img src="https://img.shields.io/static/v1?label&message=voltar+ao+topo&color=444444&style=flat&logo" alt="voltar ao topo" /></a></p>
